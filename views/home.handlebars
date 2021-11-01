@@ -1,0 +1,35 @@
+<section class="container">
+    <h1 class="text-center">Pet Image Gallery</h1>
+    <form action="/" method="POST" enctype="multipart/form-data">
+
+    {{#if success}}
+        <section class="alert alert-success alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">
+                &times;
+            </a>
+            <span>Upload Success!</span>
+        </section>
+    {{/if}}
+
+        <section class="form-group">
+            <label for="Select Image">Select Image: </label>
+            <input type="file" class="form-control" name="image" id="">
+        </section>
+        
+        <section class="form-group">
+            <button class="btn btn-block btn-danger">
+                Upload Image
+            </button>
+        </section>
+    </form>
+
+    {{#each records}}
+
+        {{#each this}}
+
+            <img src="{{this.imagename}}" class="img-thumbnail" style="width:100%"/>
+
+        {{/each}}
+
+    {{/each}}
+</section>

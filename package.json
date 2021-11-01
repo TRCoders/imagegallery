@@ -1,0 +1,30 @@
+{
+  "name": "imagegallery",
+  "version": "1.0.0",
+  "description": "Image Gallery App",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TRCoders/imagegallery.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TRCoders/imagegallery/issues"
+  },
+  "homepage": "https://github.com/TRCoders/imagegallery#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.4",
+    "mongoose": "^6.0.12",
+    "multer": "^1.4.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  }
+}

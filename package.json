@@ -1,38 +1,41 @@
 {
-  "name": "imagegallery",
-  "version": "1.0.0",
-  "description": "Image Gallery App",
+  "name": "authentication",
   "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/TRCoders/imagegallery.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/TRCoders/imagegallery/issues"
-  },
-  "homepage": "https://github.com/TRCoders/imagegallery#readme",
   "dependencies": {
+    "bcrypt": "*",
     "bcrypt-nodejs": "^0.0.3",
-    "connect-flash": "^0.1.1",
-    "cookie-parser": "^1.4.5",
-    "ejs": "^3.1.6",
+    "body-parser": "^1.19.0",
+    "connect-flash": "~0.1.1",
+    "cookie-parser": "~1.4.3",
+    "ejs": "~2.5.2",
     "express": "^4.17.1",
     "express-handlebars": "^5.3.4",
-    "express-session": "^1.17.2",
-    "mongoose": "^6.0.12",
-    "morgan": "^1.10.0",
+    "express-session": "^1.15.6",
+    "grid": "^4.10.8",
+    "gridfs-stream": "^1.1.1",
+    "lodash": "^4.17.20",
+    "method-override": "~2.3.6",
+    "mongodb": "^3.3.4",
+    "mongoose": "^5.12.1",
+    "morgan": "^1.9.1",
+    "mpath": ">=0.5.1",
     "multer": "^1.4.3",
-    "passport": "^0.5.0",
-    "passport-local": "^1.0.0"
+    "multer-gridfs-storage": "^5.0.2",
+    "passport": "~0.3.2",
+    "passport-facebook": "~2.1.1",
+    "passport-google-oauth": "~1.0.0",
+    "passport-local": "~1.0.0",
+    "passport-twitter": "^0.1.5"
   },
   "devDependencies": {
     "nodemon": "^2.0.14"
-  }
+  },
+  "scripts": {
+    "devStart": "node server.js"
+  },
+  "description": "1. Clone repo\r 2. run `npm install`",
+  "version": "1.0.0",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

@@ -1,2 +1,2 @@
-# imagegallery
-Image Gallery App
+# pet-diet-tracker
+To track your pet eating habits

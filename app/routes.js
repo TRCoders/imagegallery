@@ -9,7 +9,7 @@ module.exports = function(app, passport, db) {
 
     // PROFILE SECTION =========================
     app.get('/profile', isLoggedIn, function(req, res) {
-        db.collection('messages').find().toArray((err, result) => {
+        db.collection('dietData').find({createdBy: req.user._id}).toArray((err, result) => {
           if (err) return console.log(err)
           res.render('profile.ejs', {
             user : req.user,
@@ -17,7 +17,7 @@ module.exports = function(app, passport, db) {
           })
         })
     });
-
+    
     // LOGOUT ==============================
     app.get('/logout', function(req, res) {
         req.logout();
@@ -26,8 +26,8 @@ module.exports = function(app, passport, db) {
 
 // message board routes ===============================================================
 
-    app.post('/messages', (req, res) => {
-      db.collection('messages').save({name: req.body.name, msg: req.body.msg, thumbUp: 0, thumbDown:0}, (err, result) => {
+    app.post('/profile', (req, res) => {
+      db.collection('dietData').save({name: req.body.name, msg: req.body.msg, thumbUp: 0, createdBy: req.user._id}, (err, result) => {
         if (err) return console.log(err)
         console.log('saved to database')
         res.redirect('/profile')
@@ -35,28 +35,12 @@ module.exports = function(app, passport, db) {
     })
 
     app.put('/messages', (req, res) => {
-      db.collection('messages')
-      .findOneAndUpdate({name: req.body.name, msg: req.body.msg}, {
+      db.collection('dietData')
+      .findOneAndUpdate({name: null, msg: req.body.msg}, {
         $set: {
-          thumbUp:req.body.thumbUp + 1
-        }
-      }, {
-        sort: {_id: -1},
-        upsert: true
-      }, (err, result) => {
-        if (err) return res.send(err)
-        res.send(result)
-      })
-    })
+          name: req.body.name,
+          msg: 'dietData'
 
-    app.put('/thumbDown', (req, res) => {
-      db.collection('messages')
-      .findOneAndUpdate({
-        name: req.body.name,
-        msg: req.body.msg
-      }, {
-        $set: {
-          thumbUp:req.body.thumbUp - 1
         }
       }, {
         sort: {_id: -1},
@@ -114,9 +98,10 @@ module.exports = function(app, passport, db) {
 
     // local -----------------------------------
     app.get('/unlink/local', isLoggedIn, function(req, res) {
-        var user            = req.user;
+        let user            = req.user;
         user.local.email    = undefined;
         user.local.password = undefined;
+        user.local.name = undefined;
         user.save(function(err) {
             res.redirect('/profile');
         });
@@ -131,3 +116,7 @@ function isLoggedIn(req, res, next) {
 
     res.redirect('/');
 }
+
+
+// file upload
+
